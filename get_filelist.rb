@@ -11,7 +11,6 @@ def get_file_hash(dir_path)
   file_list = Hash.new { |hash, key| hash[key] = Array.new() }
   Dir.glob(file_filter) {|file_name| #get each file name
     file_list[file_name][0]="none"
-    break
   }
   return file_list
 end
@@ -44,10 +43,4 @@ def print_html_li(file_list)
   }
   
   print "</ul>\n"
-end
-
-begin
-	file_list = get_file_hash(".")
-  file_list = get_file_detail(file_list, "title")
-  print_html_li(file_list)
 end
