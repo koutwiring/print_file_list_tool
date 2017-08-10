@@ -21,7 +21,7 @@ def get_file_detail(file_list, tag)
     string_count = 0
     contents = File.read(file_name)#read file
     
-    contents.gsub(/[\t\r\n]/,"").scan(/<#{tag}>([^<#{tag}>]*)<\/#{tag}>/){|match_strings| #get "<tag> string </tag>"
+    contents.gsub(/[\s\t\r\n]/,"").scan(/<#{tag}>(.*?)<\/#{tag}>/){|match_strings| #get "<tag> string </tag>"
       file_list[file_name][string_count] = match_strings[0].gsub(/<(".*?"|'.*?'|[^'"])*?>/, "") #remove tag and insert hash
       string_count+=1
     }
